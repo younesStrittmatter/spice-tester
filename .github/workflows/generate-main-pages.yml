@@ -12,7 +12,7 @@ jobs:
 
       - name: generate a code reference from src
         id: generate
-        uses: younesStrittmatter/pages-from-pyproject-action/release@v1a0
+        uses: younesStrittmatter/pages-from-pyproject-action@v1a0
         with:
           src-file: 'pyproject.toml'
           out-file-index: 'docs/index.md'
