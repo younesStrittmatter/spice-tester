@@ -1,11 +1,10 @@
 on:
   workflow_dispatch
-  
+
 env:
   SRC_FILE: 'pyproject.toml'
   OUT_FILE_INDEX: 'docs/index.md'
   OUT_FILE_QUICK: 'docs/quick_start.md'
-  BRANCH_NAME: build-pages-from-toml-$(date +%s)
 
 jobs:
   build_pages_from_toml:
@@ -30,8 +29,12 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
 
       - name: Create new branch
+        id: create_branch
         run: |
-          git checkout -b  ${{ env.BRANCH_NAME }}
+          BRANCH_NAME=build-pages-from-toml-$(date +%s)
+          git checkout -b $BRANCH_NAME
+          echo "::set-output name=branch_name::$BRANCH_NAME"
+        shell: bash
 
       - name: Commit changes
         run: |
@@ -44,13 +47,11 @@ jobs:
           git push origin HEAD
 
       - name: Create pull request
-        run: |
-          branch="${BRANCH_NAME}"
-          echo "Creating pull request for branch: $branch"
-          create-pull-request \
-            --commit-message "Build pages using build-pages-from-toml.py" \
-            --title "Build pages" \
-            --body "Please review these changes." \
-            --labels "auto-generated" \
-            --reviewers "octocat" \
-            --branch "$branch"
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "Build pages using build-pages-from-toml.py"
+          branch: ${{ steps.create_branch.outputs.branch_name }}
+          title: "Build pages"
+          body: "Please review these changes."
+          labels: "auto-generated"
+          reviewers: "octocat"
