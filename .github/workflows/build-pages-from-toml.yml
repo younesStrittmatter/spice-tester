@@ -19,9 +19,9 @@ jobs:
         id: build
         uses: younesStrittmatter/pages-from-pyproject-action@v1a0
         with:
-          src-file: $SRC_FILE
-          out-file-index: $OUT_FILE_INDEX
-          out-file-quick: $OUR_FILE_QUICK
+          src-file: ${{ env.SRC_FILE }}
+          out-file-index: ${{ env.OUT_FILE_INDEX }}
+          out-file-quick: ${{ env.OUT_FILE_QUICK }}
 
       - name: Configure Git
         run: |
@@ -34,8 +34,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add $OUT_FILE_INDEX
-          git add $OUT_FILE_QUICK
+          git add ${{ env.OUT_FILE_INDEX }}
+          git add ${{ env.OUT_FILE_QUICK }}
           git commit -m "Build pages using build-pages-from-toml.py"
 
       - name: Push changes to GitHub
