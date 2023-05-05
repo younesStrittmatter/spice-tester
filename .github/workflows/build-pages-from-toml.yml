@@ -15,13 +15,7 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Build pages
-        id: build
-        uses: younesStrittmatter/pages-from-pyproject-action@v1a0
-        with:
-          src-file: ${{ env.SRC_FILE }}
-          out-file-index: ${{ env.OUT_FILE_INDEX }}
-          out-file-quick: ${{ env.OUT_FILE_QUICK }}
+      
 
       - name: Configure Git
         run: |
@@ -35,6 +29,14 @@ jobs:
           git checkout -b $BRANCH_NAME
           echo "::set-output name=branch_name::$BRANCH_NAME"
         shell: bash
+      
+      - name: Build pages
+        id: build
+        uses: younesStrittmatter/pages-from-pyproject-action@v1a0
+        with:
+          src-file: ${{ env.SRC_FILE }}
+          out-file-index: ${{ env.OUT_FILE_INDEX }}
+          out-file-quick: ${{ env.OUT_FILE_QUICK }}
 
       - name: Commit changes
         run: |
