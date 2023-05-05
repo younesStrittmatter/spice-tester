@@ -1,34 +1,10 @@
-# Name-Of-Your-Contribution (don't include AutoRA here)
+# autora-theorist-template
 
-Explain what your contribution is doing here
+AutoRA Theorist Template
 
-You can include inline mathematics like this: \(3 < 4\)
+GitHub repository: [https://github.com/AutoResearch/autora-theorist-template](https://github.com/AutoResearch/autora-theorist-template)
 
-Include block mathematics like this (don't forget the empty lines above and below the block):
+### Authors:
 
-$$  
-y + 1 = 4 
-$$
-
-... or this:
-
-\[
-E(\mathbf{v}, \mathbf{h}) = -\sum_{i,j}w_{ij}v_i h_j - \sum_i b_i v_i - \sum_j c_j h_j
-\]
-
-... or this:
-
-\begin{align}
-    p(v_i=1|\mathbf{h}) & = \sigma\left(\sum_j w_{ij}h_j + b_i\right) \\
-    p(h_j=1|\mathbf{v}) & = \sigma\left(\sum_i w_{ij}v_i + c_j\right)
-\end{align}
-
-
-Include inline mathematics like this \(x < 1\) or this $c = 3$ or this
-or block mathematics:
-
-\[
-x + 1 = 3
-\]
-
+[Max Mustermann](mailto: max@mustermann.de)
 
