@@ -50,7 +50,10 @@ jobs:
         run: |
           git add ${{ env.OUT_FILE_INDEX }}
           git add ${{ env.OUT_FILE_QUICK }}
-          git commit -m "Build pages using build-pages-from-toml.py"
+          git status
+          git diff --cached
+          git commit -m "Build pages using build-pages-from-toml.py" || true
+
 
       - name: Push changes to GitHub
         run: |
