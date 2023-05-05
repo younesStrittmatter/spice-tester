@@ -49,6 +49,7 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
+          token: ${{ secrets.GH_PAT }}
           commit-message: "Build pages using build-pages-from-toml.py"
           base: main
           branch: ${{ steps.create_branch.outputs.branch_name }}
