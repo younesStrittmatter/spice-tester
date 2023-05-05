@@ -5,6 +5,7 @@ env:
   SRC_FILE: 'pyproject.toml'
   OUT_FILE_INDEX: 'docs/index.md'
   OUT_FILE_QUICK: 'docs/quick_start.md'
+  BRANCH_NAME: build-pages-from-toml-$(date +%s)
 
 jobs:
   build_pages_from_toml:
@@ -30,7 +31,7 @@ jobs:
 
       - name: Create new branch
         run: |
-          git checkout -b build-pages-from-toml-$(date +%s)
+          git checkout -b  ${{ env.BRANCH_NAME }}
 
       - name: Commit changes
         run: |
@@ -46,7 +47,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "Build pages using build-pages-from-toml.py"
-          branch: "build-pages-from-toml-$(date +%s)"
+          branch: ${{ env.BRANCH_NAME }}
           title: "Build pages"
           body: "Please review these changes."
           labels: "auto-generated"
