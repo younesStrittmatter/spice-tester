@@ -1,4 +1,4 @@
-def test(i: str= 3, k):
+def test(k, i: str= 3):
   """
   some docstring
   """
