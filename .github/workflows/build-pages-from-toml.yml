@@ -58,15 +58,3 @@ jobs:
       - name: Push changes to GitHub
         run: |
           git push origin HEAD
-
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GH_PAT }}
-          commit-message: "Build pages using build-pages-from-toml.py"
-          base: main
-          branch: ${{ steps.create_branch.outputs.branch_name }}
-          title: "Build pages"
-          body: "Please review these changes."
-          labels: "auto-generated"
-          reviewers: "octocat"
