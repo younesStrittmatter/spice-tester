@@ -50,6 +50,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "Build pages using build-pages-from-toml.py"
+          base: main
           branch: ${{ steps.create_branch.outputs.branch_name }}
           title: "Build pages"
           body: "Please review these changes."
