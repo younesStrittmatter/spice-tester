@@ -44,11 +44,13 @@ jobs:
           git push origin HEAD
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: "Build pages using build-pages-from-toml.py"
-          branch: ${{ env.BRANCH_NAME }}
-          title: "Build pages"
-          body: "Please review these changes."
-          labels: "auto-generated"
-          reviewers: "octocat"
+        run: |
+          branch="${BRANCH_NAME}"
+          echo "Creating pull request for branch: $branch"
+          create-pull-request \
+            --commit-message "Build pages using build-pages-from-toml.py" \
+            --title "Build pages" \
+            --body "Please review these changes." \
+            --labels "auto-generated" \
+            --reviewers "octocat" \
+            --branch "$branch"
