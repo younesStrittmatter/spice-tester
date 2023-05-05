@@ -14,8 +14,9 @@ jobs:
         id: generate
         uses: younesStrittmatter/pages-from-pyproject-action/release@v1a0
         with:
-          src: 'src'
-          out-file: 'docs/code_references.md'
+          src-file: 'pyproject.toml'
+          out-file-index: 'docs/index.md'
+          out-file-quick: 'docs/quick_start.md'
 
       - name: Configure Git
         run: |
