@@ -67,5 +67,4 @@ jobs:
           pr_title: "Build pages"
           pr_body: "Please review these changes."
           pr_label: "auto-generated"
-          pr_reviewer: "octocat"
           github_token: ${{ secrets.GH_PAT }}
